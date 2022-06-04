@@ -1,0 +1,16 @@
+img {
+    /* width: auto; */
+    width: 100% ;
+    height: auto;
+}
+
+video {
+    /* width: auto; */
+    width: 100% ;
+    height: auto;
+}
+
+.card {
+    background-color: rgb(209, 204, 204);
+    width: auto;
+}
