@@ -6,19 +6,19 @@ import { ApodService } from '../services/apod.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  payload: any = [];
-  constructor(private apodService: ApodService) { }
+  // payload: any = [];
+  // constructor(private apodService: ApodService) { }
 
   ngOnInit(): void {
   }
 
-  searchChanged() {
-    this.getPhoto();
-  }
-  getPhoto(): void {
-    this.apodService.getPhoto().subscribe((response: any) => {
-      console.log(response);
-      this.payload = response;
-    });
-  }
+  // searchChanged() {
+  //   this.getPhoto();
+  // }
+  // getPhoto(): void {
+  //   this.apodService.getPhoto().subscribe((response: any) => {
+  //     console.log(response);
+  //     this.payload = response;
+  //   });
+  // }
 }
