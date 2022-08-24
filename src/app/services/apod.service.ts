@@ -15,8 +15,8 @@ export class ApodService {
 
   constructor(private http: HttpClient) { }
 
-  public getPhoto(): Observable<Payload[]> {
-    return this.http.get<Payload[]>(`${ApodService.BASE_API_URL}?api_key=${this.apiKey}`)
+  public getPhoto(): Observable<Payload> {
+    return this.http.get<Payload>(`${ApodService.BASE_API_URL}?api_key=${this.apiKey}`)
   }
 
   // public getPhoto() {

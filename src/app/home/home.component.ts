@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApodService } from '../services/apod.service';
-import { Payload} from '../models/payload';
+import { Payload } from '../models/payload';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -10,14 +10,18 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-payload: any = [];
+//payload: any = [];
+
+media_type: string = '';
 
 @Input() site: string = 'YouTube';
-@Input() key: string | null = null;
+@Input() key: string = '';
 
 videoUrl: SafeResourceUrl = '';
 
-//payload: Payload[] = [];
+Url  = 'https://www.youtube.com/embed/ruytirhuirhu';
+
+payload!: Payload;
 
   constructor(private apodService: ApodService, private sanitizer: DomSanitizer) { }
 
@@ -26,12 +30,16 @@ videoUrl: SafeResourceUrl = '';
   }
 
   getPhoto(): void {
-    this.apodService.getPhoto().subscribe((response: Payload[]) => {
-      console.log(response);
+    this.apodService.getPhoto().subscribe((response: Payload) => {
+      console.log('response: ' + response);
       this.payload = response;
-      // this.key = this.payload.url.substring(this.payload.lastIndexOf('/') + 1);
+      console.log('payload: ' + this.payload);
+
       var parts = this.payload.url.split('/');
-      this.key = parts.pop();
+      //var parts = this.Url.split('/');
+      console.log('parts ' + parts);
+      this.key = parts.slice(-1)[0];
+      //this.key = parts.pop() || parts.pop();
       console.log('KEY ' + this.key);
       this.videoUrl = this.getSafeUrl('https://www.youtube.com/embed/' + this.key);
     });

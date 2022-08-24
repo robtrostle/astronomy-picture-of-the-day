@@ -2,8 +2,8 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-12 px-0">
-        <img *ngIf="payload.media_type === 'image'" class="img-thumbnail" [src] = "payload.url">
-         <div *ngIf="payload.media_type === 'video'">
+        <img *ngIf="payload?.media_type === 'image'" class="img-thumbnail" [src] = "payload.url">
+         <div *ngIf="payload?.media_type === 'video'">
           <!-- <video-embed class="embed-responsive-item" [key]="key" [site]="site" allowfullscreen></video-embed> -->
           <iframe
           class="embed-responsive-item"
@@ -16,14 +16,14 @@
           allowfullscreen = "true"
       ></iframe>
          </div>
-        <video *ngIf="payload.media_type === 'video'" [src]="payload.url"></video>
+        <video *ngIf="payload?.media_type === 'video'" [src]="payload.url"></video>
       </div>
     </div>  
   </div>
 
   <div class="card">
     <div class="card-body">
-      {{payload.explanation}}
+      {{payload?.explanation}}
     </div>
   </div>
 <!-- 
