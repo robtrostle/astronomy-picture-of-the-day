@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import {ImageModule} from 'primeng/image';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoEmbedComponent } from './video-embed/video-embed.component';
+import { ContactComponent } from './contact/contact.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from "@angular/material/input";
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -14,12 +19,17 @@ import { VideoEmbedComponent } from './video-embed/video-embed.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    ContactComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    ImageModule
+    ImageModule,
+    AppRoutingModule,
+    NoopAnimationsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
