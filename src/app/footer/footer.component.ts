@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Payload } from '../models/payload';
+import { ApodService } from '../services/apod.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  payload!: Payload;
   date: Date = new Date();
-  constructor() { }
+  
+  constructor(private apodService: ApodService) { }
 
   ngOnInit(): void {
+    this.getPhoto();
   }
 
+  getPhoto(): void {
+    this.apodService.getPhoto().subscribe((response: Payload) => {
+      console.log('response: ' + response);
+      this.payload = response;
+      console.log('payload: ' + this.payload);
+
+      var parts = this.payload.url.split('/');
+      
+      
+    });
+
+}
 }
