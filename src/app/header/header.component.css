@@ -35,7 +35,16 @@
     font-size: 2rem;
   }
 
-  
+  @media only screen and (max-width: 991px){
+  	
+    .mobile{
+        display: block;
+    }
+    .bi{
+      font-size: 1rem;
+    }
+
+  }
     
 
   
