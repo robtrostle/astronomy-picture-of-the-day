@@ -1,11 +1,8 @@
-
-<div *ngIf="!isDate" class="container-fluid">
-
+<div  class="container-fluid">
     <div class="row">
       <div class="col-12 px-0">
         <img *ngIf="payload?.media_type === 'image'" class="img-thumbnail" [src] = "payload.url">
          <div *ngIf="payload?.media_type === 'video'">
-          <!-- <video-embed class="embed-responsive-item" [key]="key" [site]="site" allowfullscreen></video-embed> -->
           <iframe
           class="embed-responsive-item"
           width="100%"
@@ -20,17 +17,10 @@
         <video *ngIf="payload?.media_type === 'video'" [src]="payload.url"></video>
       </div>
     </div>  
-  </div>
-
-  <div *ngIf="!isDate" class="card">
+    </div>
+    
+    <div  class="card">
     <div class="card-body">
       {{payload?.explanation}}
     </div>
-  </div>
-
-
-
-<!-- <pre>{{ payload | json }}</pre> -->
-
-    
-
+    </div>

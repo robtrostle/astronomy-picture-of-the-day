@@ -4,14 +4,18 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import {ImageModule} from 'primeng/image';
+import { ImageModule } from 'primeng/image';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoEmbedComponent } from './video-embed/video-embed.component';
 import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { PhotoByDateComponent } from './photo-by-date/photo-by-date.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,8 @@ import {MatButtonModule} from '@angular/material/button';
     FooterComponent,
     HomeComponent,
     VideoEmbedComponent,
-    ContactComponent
+    ContactComponent,
+    PhotoByDateComponent
   ],
   imports: [
     HttpClientModule,
@@ -29,9 +34,11 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     NoopAnimationsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

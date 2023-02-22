@@ -2,4 +2,34 @@
     <span>©{{date | date: 'yyyy'}} APOD All Rights Reserved. Contact: robtrostle@yahoo.com</span>
 </footer> -->
 
-<footer class="date">{{payload.date | date: 'MM/dd/yyyy'}}</footer>
+<!-- <footer class="date">{{ payload?.date | date: 'MM/dd/yyyy' }}
+
+    <mat-form-field style="width:1px;">
+        <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="date" [value]="selectedDate"
+         
+        (dateChange)="addEvent($event)"
+        name="datePicker" ngModel>
+        <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker startView="multi-year"></mat-datepicker>
+    </mat-form-field>
+
+</footer> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><i class="bi bi-calendar-month"></i></div>
+        <div class="col">{{ payload?.date | date: 'MM/dd/yyyy' }}</div>
+        <div class="col">
+            <mat-datepicker-toggle [for]="myDatePicker" matSuffix>
+            <mat-form-field style="width:0px;">
+                
+                <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="date" [value]="selectedDate"
+                (dateChange)="addEvent($event)"
+                name="datePicker" ngModel
+                >
+                <mat-datepicker #myDatePicker startView="multi-year"></mat-datepicker>
+            </mat-form-field>
+        </mat-datepicker-toggle>
+        </div>
+    </div>
+</div>
