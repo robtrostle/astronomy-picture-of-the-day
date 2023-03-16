@@ -1,5 +1,17 @@
-<!-- <footer>
-    <span>©{{date | date: 'yyyy'}} APOD All Rights Reserved. Contact: robtrostle@yahoo.com</span>
-</footer> -->
+<footer>
+  <div class="container">
+    <div class="row"*ngIf="payload | async as photo">
+    
+    <div class="col-sm">
+      <span class="date">{{photo.date | date: 'MM/dd/yyy'}}</span>
+    </div>
 
-<footer class="date">{{payload.date | date: 'MM/dd/yyyy'}}</footer>
+      <div class="col-sm"><mat-form-field>
+        <input matInput [matDatepicker]="myDatePicker" [formControl]="date" [min]="minDate" [max]="todayDate">
+        <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker startView="multi-year"></mat-datepicker>
+      </mat-form-field></div>
+        
+    </div>
+    </div>
+</footer>

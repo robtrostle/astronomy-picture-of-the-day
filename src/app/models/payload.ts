@@ -1,4 +1,4 @@
-export interface Payload {
+export type Payload = {
     copyright: string;
     date: string;
     explanation: string;

@@ -1,27 +1,62 @@
 
+a {
+  text-decoration: none; 
+  color: white;
+  list-style: none;
+  display: block;
+}
 
-footer {
-  display: flex;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 100%; /* Height of the footer */
-  background: rgb(0, 7, 10);
-  justify-content: center;
+.links {
+  display: inline; 
+  /* margin-right: 15px;  */
+}
+
+h3{
+  color:lightskyblue;
+}
+
+.date {
+  color: rgb(247, 242, 242);
+}
+.bi  {
+  color:rgb(244, 211, 169);
+  font-size: 2rem;
+}
+
+mat-datepicker-toggle {
+ color:rgb(244, 211, 169);
+ font-size: 4rem;
+}
+
+mat-form-field {
+  width: 6rem;
+  color:rgb(244, 211, 169);
+}
+
+.col-sm {
   justify-content: center;
   align-items: center;
-  border-top: black;
-  padding: 0.5rem 1rem; 
-  height: 65px;
-  margin: 0px;
-  /* width: auto; */
-}
-span {
-  color: white;
+  display: flex;
+  padding: 0;
 }
 
-.date{
-  color:rgb(232, 165, 78);
-  font-size: 1.7rem;
+.date {
+  color:rgb(244, 211, 169);
+  font-size: 1.5rem;
   font-weight: 500;
 }
+
+@media only screen and (max-width: 991px){
+  
+  .mobile{
+      display: block;
+  }
+  .bi{
+    font-size: 1rem;
+  }
+  .date {
+    font-size: 1.2rem;
+  }
+}
+
+
