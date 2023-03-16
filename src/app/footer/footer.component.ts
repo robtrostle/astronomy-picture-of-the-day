@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Payload } from '../models/payload';
 import { ApodService } from '../services/apod.service';
 
@@ -8,25 +10,19 @@ import { ApodService } from '../services/apod.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  payload!: Payload;
-  date: Date = new Date();
+  payload: Observable<Payload>;
+  date = new FormControl(new Date());
+  todayDate: Date = new Date();
+  minDate = new Date(1995, 5, 16)
   
   constructor(private apodService: ApodService) { }
 
   ngOnInit(): void {
-    this.getPhoto();
+    this.payload = this.apodService.getPhoto();
+    this.date.valueChanges.subscribe(value => {
+      this.apodService.updateDate(value!);
+    })
   }
 
-  getPhoto(): void {
-    this.apodService.getPhoto().subscribe((response: Payload) => {
-      console.log('response: ' + response);
-      this.payload = response;
-      console.log('payload: ' + this.payload);
-
-      var parts = this.payload.url.split('/');
-      
-      
-    });
-
 }
-}
+
