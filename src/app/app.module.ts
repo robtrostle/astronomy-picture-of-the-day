@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ImageModule } from 'primeng/image';
 import { HttpClientModule } from '@angular/common/http';
-import { VideoEmbedComponent } from './video-embed/video-embed.component';
+
 import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +23,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    VideoEmbedComponent,
     ContactComponent
   ],
   imports: [
