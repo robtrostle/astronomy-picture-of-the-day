@@ -3,7 +3,7 @@
 
     <div class="row" >
       <div class="col-12 px-0" *ngIf="payload | async as photo">
-        <img *ngIf="photo?.media_type === 'image'" class="img-thumbnail" [src] = "photo.url">
+        <img *ngIf="photo?.media_type === 'image'" class="img-thumbnail" [src] = "photo.hdurl">
          <div class="videoWrapper" *ngIf="photo?.media_type === 'video'">
           <iframe
           class="embed-responsive-item"
