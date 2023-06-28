@@ -23,6 +23,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.payload = this.apodService.getPhoto();
+    setTimeout(() => {
+      console.log("Delayed for 1 second.");
+    }, 1000);
     this.apodService.updateDate(new Date());
     this.payload.subscribe(data => {
       console.log(data)
@@ -32,21 +35,7 @@ export class HomeComponent implements OnInit {
       }
     }) 
   }
-  // getPhoto(): void {
-  //   this.apodService.getPhoto().subscribe((response: Payload) => {
-  //     console.log('response: ' + response);
-  //     this.payload = response;
-  //     console.log('payload: ' + this.payload);
 
-  //     var parts = this.payload.url.split('/');
-  //     //var parts = this.Url.split('/');
-  //     console.log('parts ' + parts);
-  //     this.key = parts.slice(-1)[0];
-  //     //this.key = parts.pop() || parts.pop();
-  //     console.log('KEY ' + this.key);
-  //     this.videoUrl = this.getSafeUrl('https://www.youtube.com/embed/' + this.key);
-  //   });
-  // }
   getSafeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
