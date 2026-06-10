@@ -6,11 +6,14 @@
       <span class="date">{{photo.date | date: 'MM/dd/yyy'}}</span>
     </div>
 
-      <div class="col-sm"><mat-form-field>
-        <input matInput [matDatepicker]="myDatePicker" [formControl]="date" [min]="minDate" [max]="todayDate">
-        <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #myDatePicker startView="multi-year"></mat-datepicker>
-      </mat-form-field></div>
+      <div class="col-sm">
+        <label class="datepicker-label">Choose date:</label>
+        <mat-form-field>
+          <input matInput [matDatepicker]="myDatePicker" [formControl]="date" [min]="minDate" [max]="todayDate">
+          <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+      </div>
         
     </div>
     </div>

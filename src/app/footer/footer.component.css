@@ -23,6 +23,14 @@ h3{
   font-size: 2rem;
 }
 
+.datepicker-label {
+  color: rgb(244, 211, 169);
+  margin-right: 8px;
+  line-height: normal;
+  align-self: center;
+  margin-bottom: -1.25em;
+}
+
 mat-datepicker-toggle {
  color:rgb(244, 211, 169);
  font-size: 4rem;
