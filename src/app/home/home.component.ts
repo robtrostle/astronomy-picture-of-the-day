@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApodService } from '../services/apod.service';
 import { Payload } from '../models/payload';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   media_type: string = '';
 
   videoUrl: SafeResourceUrl = '';
+  hasEmbed: boolean = false;
+  errorMessage: string = '';
 
   payload: Observable<Payload>;
 
@@ -23,20 +25,35 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.payload = this.apodService.getPhoto();
-    setTimeout(() => {
-      console.log("Delayed for 1 second.");
-    }, 1000);
+    this.apodService.getError().subscribe((message) => {
+      this.errorMessage = message;
+    });
     this.apodService.updateDate(new Date());
-    this.payload.subscribe(data => {
-      console.log(data)
+    this.payload.subscribe((data) => {
+      this.errorMessage = '';
       this.media_type = data.media_type;
-      if(this.media_type == 'video'){
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(data.url);
+      this.hasEmbed = false;
+      // New API: `url` is the post permalink, not a media URL. For video/iframe
+      // posts the embeddable source lives inside `basic_html`.
+      if (data.media_type === 'video' || data.media_type === 'iframe') {
+        const src = this.extractIframeSrc(data.basic_html);
+        if (src) {
+          this.hasEmbed = true;
+          this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(src);
+        }
       }
-    }) 
+    });
   }
 
   getSafeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  private extractIframeSrc(html?: string): string | null {
+    if (!html) {
+      return null;
+    }
+    const match = html.match(/<iframe[^>]*\ssrc=["']([^"']+)["']/i);
+    return match ? match[1] : null;
   }
 }

@@ -1,33 +1,42 @@
-
 <div class="container-fluid">
+
+    <div class="alert alert-warning my-2" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
 
     <div class="row" >
       <div class="col-12 px-0" *ngIf="payload | async as photo">
-        <img *ngIf="photo?.media_type === 'image'" class="img-thumbnail" [src] = "photo.hdurl">
-         <div class="videoWrapper" *ngIf="photo?.media_type === 'video'">
-          <iframe
-          class="embed-responsive-item"
-          width="560"
-          height="349"
-          [src]="videoUrl"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen = "true"
-          style="--aspect-ratio: 3 / 4;"
-      ></iframe>
-         </div>
+        <img *ngIf="photo?.media_type === 'image'" class="img-thumbnail" [src]="photo.hdurl" [alt]="photo.alt || photo.title">
+
+        <ng-container *ngIf="photo?.media_type === 'video' || photo?.media_type === 'iframe'">
+          <div class="videoWrapper" *ngIf="hasEmbed">
+            <iframe
+            class="embed-responsive-item"
+            width="560"
+            height="349"
+            [src]="videoUrl"
+            title="APOD video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen = "true"
+            style="--aspect-ratio: 3 / 4;"
+        ></iframe>
+          </div>
+
+          <!-- Fallback when the embed can't be extracted: poster image linking to the post. -->
+          <a *ngIf="!hasEmbed" [href]="photo.permalink || photo.url" target="_blank" rel="noopener">
+            <img class="img-thumbnail" [src]="photo.hdurl" [alt]="photo.alt || photo.title">
+          </a>
+        </ng-container>
       </div>
     </div>  
   </div>
 
   <div class="card">
     <div class="card-body" *ngIf="payload | async as photo">
-      {{photo?.explanation}}
+      <h5 *ngIf="photo?.title" class="card-title">{{ photo.title }}</h5>
+      <div [innerHTML]="photo?.explanation"></div>
     </div>
   </div>
 
 <!-- <pre>{{ payload | json }}</pre> -->
-
-    
-

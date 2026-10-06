@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://api.nasa.gov/planetary/apod'
+  // Legacy api.nasa.gov/planetary/apod is being archived 2026-12-01 and now
+  // returns placeholder data. New WordPress-backed APOD endpoint (no api_key).
+  apiBaseUrl: 'https://science.nasa.gov/wp-json/wp/v2/apod-basic'
 };
 
 /*
